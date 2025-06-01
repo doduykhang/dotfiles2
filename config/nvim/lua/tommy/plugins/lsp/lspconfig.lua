@@ -157,5 +157,10 @@ return {
         cmd = { 'jdtls' },
         -- root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
       })
+
+    vim.lsp.config("pyright",
+      {
+        root_dir = vim.fs.dirname(vim.fs.find({ 'pyproject.toml', '.git' }, { upward = true })[1]),
+      })
   end,
 }

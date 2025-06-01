@@ -94,7 +94,7 @@ vim.keymap.set("n", "<C-i>", "4zl", { remap = true, desc = "Scrol tab/buffer to 
 vim.keymap.set("n", "<C-e>", "4zh", { remap = true, desc = "Scrol tab/buffer to the left" })
 
 -- Delete and Enter file above and below
-vim.keymap.set("n", "<BS>", "kdd", { desc = "Delete line above" })
+vim.keymap.set("n", "<BS>", "k\"_dd", { desc = "Delete line above" })
 vim.keymap.set("n", "<CR>", "O<Esc>j", { desc = "Bring this line down to a newline" })
 
 vim.keymap.set("x", "<Tab>", ">gv", { desc = "Tab indent selection to the right" })
