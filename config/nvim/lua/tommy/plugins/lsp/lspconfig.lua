@@ -160,7 +160,7 @@ return {
 
     vim.lsp.config("pyright",
       {
-        root_dir = vim.fs.dirname(vim.fs.find({ 'pyproject.toml', '.git' }, { upward = true })[1]),
+        root_dir = vim.fs.dirname(vim.fs.find({ 'pyproject.toml', '.git', '.venv' }, { upward = true })[1]),
       })
   end,
 }

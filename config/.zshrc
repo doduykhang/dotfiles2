@@ -88,8 +88,8 @@ source <(kubectl completion zsh)
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 ### Google Cloud SDK
-[[ -f "$HOME/Documents/development/google-cloud-sdk/path.zsh.inc" ]] && source "$HOME/Documents/development/google-cloud-sdk/path.zsh.inc"
-[[ -f "$HOME/Documents/development/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/Documents/development/google-cloud-sdk/completion.zsh.inc"
+[[ -f "$HOME/Documents/projects/development/google-cloud-sdk/path.zsh.inc" ]] && source "$HOME/Documents/projects/development/google-cloud-sdk/path.zsh.inc"
+[[ -f "$HOME/Documents/projects/development/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/Documents/projects/development/google-cloud-sdk/completion.zsh.inc"
 
 ### Optional local env
 [[ -f ~/.env ]] && source ~/.env

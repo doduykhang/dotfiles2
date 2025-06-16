@@ -13,19 +13,25 @@ return {
     -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
     auto_suggestions_provider = "claude",
     cursor_applying_provider = nil, -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
-    claude = {
-      endpoint = "https://api.anthropic.com",
-      model = "claude-3-5-sonnet-20241022",
-      temperature = 0,
-      max_tokens = 4096,
-    },
-    openai = {
-      endpoint = "https://api.openai.com/v1",
-      model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000,  -- timeout in milliseconds
-      temperature = 0,  -- adjust if needed
-      max_tokens = 4096,
-      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+    providers = {
+      openai = {
+        endpoint = "https://api.openai.com/v1",
+        model = "gpt-4o",     -- your desired model (or use gpt-4o, etc.)
+        extra_request_body = {
+          timeout = 30000,    -- timeout in milliseconds
+          temperature = 0.75, -- adjust if needed
+          max_completion_tokens = 8192,
+          -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+        },
+      },
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-5-sonnet-20241022",
+        extra_request_body = {
+          temperature = 0.75,
+          max_tokens = 4096,
+        },
+      },
     },
     behaviour = {
       auto_suggestions = false, -- Experimental stage
@@ -144,11 +150,11 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
-    "echasnovski/mini.pick",         -- for file_selector provider mini.pick
-    "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-    "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-    "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua",        -- for providers='copilot'
+    "echasnovski/mini.pick",       -- for file_selector provider mini.pick
+    "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
+    "ibhagwan/fzf-lua",            -- for file_selector provider fzf
+    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    "zbirenbaum/copilot.lua",      -- for providers='copilot'
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
