@@ -30,10 +30,6 @@ tasks:
       - echo "----------------------------------------------------------------"
       - sudo echo "Starting to setup system"
       - echo "----------------------------------------------------------------"
-      - task: copydotfiles
-        vars: {
-          COPYDOTFILES_MODE: '{{.COPYDOTFILES_MODE}}'
-        }
       - command -v devbox &> /dev/null || { curl -fsSL https://get.jetify.com/devbox | bash; }
       - sh -c '[ -d "{{.DEVBOX_DIR_PATH}}" ] || mkdir -p "{{.DEVBOX_DIR_PATH}}"'
       - ln -sf "$(pwd)/devbox.json" "{{.DEVBOX_DIR_PATH}}/devbox.json"
@@ -52,15 +48,7 @@ tasks:
     cmds: 
       - |
         if [ "{{.COPYDOTFILES_MODE}}" = "force" ]; then FORCE_FLAG="-f"; fi
+        ln -s ${FORCE_FLAG} "$(pwd)/config/ags"               "$HOME/.config/ags"
         ln -s ${FORCE_FLAG} "$(pwd)/config/hypr"               "$HOME/.config/hypr"
-        ln -s ${FORCE_FLAG} "$(pwd)/config/libinput-gestures"  "$HOME/.config/libinput-gestures"
         ln -s ${FORCE_FLAG} "$(pwd)/config/nvim"               "$HOME/.config/nvim"
-        ln -s ${FORCE_FLAG} "$(pwd)/config/sway"               "$HOME/.config/sway"
-        ln -s ${FORCE_FLAG} "$(pwd)/config/swaylock"           "$HOME/.config/swaylock"
-        ln -s ${FORCE_FLAG} "$(pwd)/config/waybar"             "$HOME/.config/waybar"
-        ln -s ${FORCE_FLAG} "$(pwd)/config/wezterm"            "$HOME/.config/wezterm"
-        ln -s ${FORCE_FLAG} "$(pwd)/config/.aerospace.toml"    "$HOME/.aerospace.toml"
-        ln -s ${FORCE_FLAG} "$(pwd)/config/.p10k.zsh"          "$HOME/.p10k.zsh"
-        ln -s ${FORCE_FLAG} "$(pwd)/config/.tmux.conf"         "$HOME/.tmux.conf"
-        ln -s ${FORCE_FLAG} "$(pwd)/config/.vimrc"             "$HOME/.vimrc"
-        ln -s ${FORCE_FLAG} "$(pwd)/config/.zshrc"             "$HOME/.zshrc"
+        ln -s ${FORCE_FLAG} "$(pwd)/config/.tmux.conf"        "$HOME/.tmux.conf"
